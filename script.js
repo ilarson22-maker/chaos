@@ -32,19 +32,44 @@ function renderTasks() {
                         ${task.assignedTo ? `<div class="task-date">Assigned to: ${task.assignedTo}</div>` : ''}
                     </div>
                     <div class="task-actions">
-                        <!-- TODO -->
+                        <button>Complete</button>
+                        <button>Overdue</button>
                     </div>
                 </div>
             </div>
         `;
         
         taskList.appendChild(taskItem);
+        const completeButton = taskItem.querySelector('.complete-button');
+        const overdueButton = taskItem.querySelector('.overdue-button');
+
+        completeButton.addEventListener('click', function() {
     });
 }
 
 // Initialize the app when page loads
 document.addEventListener('DOMContentLoaded', function() {
     renderTasks();
-    
-    // TODO
+     
+    const button = document.querySelector('button[type="submit"]');
+
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        const title = document.getElementById('taskTitle').value;
+        const description = document.getElementById('taskDescription').value;
+        const date = document.getElementById('dueDate').value;
+        const person = document.getElementById('assignment').value;
+
+        const task = {
+            id: tasks.length + 1,
+            title: title,
+            description: description,
+            dueDate: date,
+            assignedTo: person,
+            completed: false
+        };
+        tasks.push(task);
+        renderTasks();
+    });
 });

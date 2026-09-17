@@ -80,6 +80,13 @@ body {
 }
 
 /* TODO */
+.complete {
+    background-color: green;
+}
+
+.overdue {
+    background-color: red;
+}
 
 .task-completed {
     opacity: 0.6;
